@@ -29,6 +29,7 @@
 #include <string>
 #include <assert.h>
 #include "sigsession.h"
+#include "remoteserver.h"
 #include "dsvdef.h"
 #include "config/appconfig.h"
 #include "log.h"
@@ -37,7 +38,8 @@
 
 AppControl::AppControl()
 {
-    _topWindow = NULL; 
+    _topWindow = NULL;
+    _remote_server = NULL;
     _session = new pv::SigSession();
 }
 
@@ -128,14 +130,23 @@ bool AppControl::Init()
 }
 
 bool AppControl::Start()
-{  
-    _session->Open(); 
+{
+    _session->Open();
+
+    _remote_server = new pv::RemoteServer(_session, 8321);
+    _remote_server->start();
+
     return true;
 }
 
  void AppControl::Stop()
  {
-    _session->Close();  
+    if (_remote_server) {
+        _remote_server->shutdown();
+        delete _remote_server;
+        _remote_server = NULL;
+    }
+    _session->Close();
  }
 
 void AppControl::UnInit()

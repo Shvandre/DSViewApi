@@ -96,6 +96,11 @@ public:
         return _is_busy;
     }
 
+    inline void setExportFile(const QString &path, const QString &suffix){
+        _file_name = path;
+        _suffix = suffix;
+    }
+
 private:
     QList<QString> getSuportedExportFormats();
     double get_integer(GVariant * var);

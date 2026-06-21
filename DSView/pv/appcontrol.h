@@ -28,8 +28,9 @@
 struct sr_context;
 class QWidget;
 
-namespace pv{ 
+namespace pv{
     class SigSession;
+    class RemoteServer;
 }
 
 class AppControl
@@ -70,7 +71,8 @@ public:
     std::string        _open_file_name; 
     QRect              _screenRect;
 
-private: 
+private:
     pv::SigSession      *_session;
-    QWidget             *_topWindow; 
+    pv::RemoteServer    *_remote_server;
+    QWidget             *_topWindow;
 };

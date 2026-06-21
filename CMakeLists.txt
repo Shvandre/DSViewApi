@@ -329,6 +329,7 @@ set(DSView_SOURCES
     DSView/pv/widgets/decodermenu.cpp
     DSView/pv/config/appconfig.cpp
     DSView/pv/appcontrol.cpp
+    DSView/pv/remoteserver.cpp
     DSView/pv/dstimer.cpp
     DSView/pv/eventobject.cpp
     DSView/pv/ZipMaker.cpp
@@ -359,6 +360,7 @@ set(DSView_SOURCES
 set(DSView_HEADERS
     DSView/mystyle.h
     DSView/pv/log.h
+    DSView/pv/remoteserver.h
     DSView/pv/sigsession.h
     DSView/pv/mainwindow.h
     DSView/pv/dialogs/deviceoptions.h
